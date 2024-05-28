@@ -13,8 +13,26 @@ local lsp_methods = {
     DID_SAVE = "textDocument/didSave",
     HOVER = "textDocument/hover",
     COMPLETION = "textDocument/completion",
+
+
+    ["initialize"] = "INITIALIZE",
+    ["shutdown"] = "SHUTDOWN",
+    ["exit"] = "EXIT",
+    ["textDocument/codeAction"] = "CODE_ACTION",
+    ["workspace/executeCommand"]= "EXECUTE_COMMAND",
+    ["textDocument/publishDiagnostics"] = "PUBLISH_DIAGNOSTICS",
+    ["textDocument/formatting"] = "FORMATTING",
+    ["textDocument/rangeFormatting"] = "RANGE_FORMATTING",
+    ["textDocument/didChange"] = "DID_CHANGE",
+    ["textDocument/didOpen"] = "DID_OPEN",
+    ["textDocument/didClose"] = "DID_CLOSE",
+    ["textDocument/didSave"] = "DID_SAVE" ,
+    ["textDocument/hover"] = "HOVER" ,
+    ["textDocument/completion"] = "COMPLETION",
 }
-vim.table_add_reverse_lookup(lsp_methods)
+
+-- TODO(@nolleh) need to check why it deprecated
+-- vim.tbl_add_reverse_lookup(lsp_methods)
 
 local internal_methods = {
     CODE_ACTION = "NULL_LS_CODE_ACTION",
@@ -25,8 +43,18 @@ local internal_methods = {
     RANGE_FORMATTING = "NULL_LS_RANGE_FORMATTING",
     HOVER = "NULL_LS_HOVER",
     COMPLETION = "NULL_LS_COMPLETION",
+
+    NULL_LS_CODE_ACTION = "CODE_ACTION",
+    NULL_LS_DIAGNOSTICS = "DIAGNOSTICS" ,
+    NULL_LS_DIAGNOSTICS_ON_OPEN = "DIAGNOSTICS_ON_OPEN",
+    NULL_LS_DIAGNOSTICS_ON_SAVE= "DIAGNOSTICS_ON_SAVE" ,
+    NULL_LS_FORMATTING = "FORMATTING",
+    NULL_LS_RANGE_FORMATTING = "RANGE_FORMATTING",
+    NULL_LS_HOVER = "HOVER",
+    NULL_LS_COMPLETION = "COMPLETION",
 }
-vim.table_add_reverse_lookup(internal_methods)
+-- TODO(@nolleh) need to check why it deprecated
+-- vim.tbl_add_reverse_lookup(internal_methods)
 
 local lsp_to_internal_map = {
     [lsp_methods.CODE_ACTION] = internal_methods.CODE_ACTION,
